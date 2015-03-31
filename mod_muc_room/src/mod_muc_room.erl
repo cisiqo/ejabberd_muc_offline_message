@@ -945,16 +945,18 @@ process_groupchat_message(From,
 					      end,
 		 case IsAllowed of
 		   true ->
-			    lists:foreach(
-			      fun({_LJID, Info}) ->
-				      ejabberd_router:route(
-					jlib:jid_replace_resource(
-					  StateData#state.jid,
-					  FromNick),
-					Info#user.jid,
-					Packet)
-			      end,
-			      ?DICT:to_list(StateData#state.users)),
+				lists:foreach(
+				 fun(Info) ->
+				    {Jid,_} = Info,
+				    {Email,Server,Source}=Jid,
+				    To={'jid',Email,Server,Source,Email,Server,Source},
+				    ejabberd_router:route(
+				       jlib:jid_replace_resource(
+				              StateData#state.jid,
+				            FromNick),
+				        To,
+				        Packet)
+				end,?DICT:to_list(StateData#state.affiliations)),
 		       NewStateData2 = case has_body_or_subject(Packet) of
 			   true ->
 				add_message_to_history(FromNick, From,

@@ -595,8 +595,8 @@ route_message(From, To, Packet) ->
       _ ->
 	  case xml:get_tag_attr_s(<<"type">>, Packet) of
 	    <<"error">> -> ok;
-	    <<"groupchat">> ->
-		bounce_offline_message(From, To, Packet);
+	    %% <<"groupchat">> ->
+		%% bounce_offline_message(From, To, Packet);
 	    <<"headline">> ->
 		bounce_offline_message(From, To, Packet);
 	    _ ->
