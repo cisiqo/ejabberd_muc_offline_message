@@ -1,0 +1,1 @@
+{'src/mod_presence',	[{outdir, "ebin"},{i,"../ejabberd-dev/include"},{pa, "../ejabberd-dev/ebin"},{d,'LAGER'}]}.
