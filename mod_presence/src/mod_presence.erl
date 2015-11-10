@@ -45,12 +45,7 @@
 -include("ejabberd_http.hrl").
 -include("ejabberd_ctl.hrl").
 
-start(Host, Opts) ->
-    % ?DEBUG("Starting mod_presence", [] ),
-    register(?PROCNAME,spawn(?MODULE, init, [Host, Opts])),  
-    ok.
-
-init(Host, _Opts) ->
+start(Host, _Opts) ->
     inets:start(),
     ssl:start(),
     ejabberd_hooks:add(set_presence_hook, Host, ?MODULE, set_presence, 50),
