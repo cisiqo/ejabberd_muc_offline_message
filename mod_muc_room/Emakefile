@@ -1,1 +1,1 @@
-{'src/ejabberd_sm',	[{outdir, "ebin"},{i,"../ejabberd-dev/include"},{pa, "../ejabberd-dev/ebin"},{d,'LAGER'}]}.
+{'src/mod_muc_room',	[{outdir, "ebin"},{i,"../ejabberd-dev/include"},{pa, "../ejabberd-dev/ebin"},{d,'LAGER'}]}.
