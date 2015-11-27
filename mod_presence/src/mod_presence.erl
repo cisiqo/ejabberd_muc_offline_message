@@ -31,7 +31,6 @@
 -behavior(gen_mod).
 
 -export([start/2,
-	 init/2,
 	 stop/1,
 	 set_presence/4,
      unset_presence/4,
