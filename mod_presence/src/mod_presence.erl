@@ -64,15 +64,20 @@ set_presence(User, Server, Resource, Packet) ->
     {xmlel, <<"presence">>, _, Pbody} = Packet,
     case Pbody of 
       [{xmlel, _, _, Xmlcdata}] ->
-        [{xmlel, _, _, Xmlcdata}] = Pbody,
         case Xmlcdata of
           [{xmlcdata,Data}] ->
-              [{xmlcdata,Data}] = Xmlcdata,
               Status = binary_to_list(Data);
-          [] ->
+          _ ->
             Status = binary_to_list(<<"chat">>)
         end;
-      [] ->
+      [{xmlel, _, _, Xmlcdata2}, _] ->
+        case Xmlcdata2 of
+          [{xmlcdata,Data}] ->
+              Status = binary_to_list(Data);
+          _ ->
+            Status = binary_to_list(<<"chat">>)
+        end;
+      _ ->
         Status = binary_to_list(<<"chat">>)
     end,
     post_data(User,Status,Resource,Server).
