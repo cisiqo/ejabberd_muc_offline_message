@@ -1,5 +1,4 @@
-### ejabberd module dev
+### ejabberd group chat offline message
 
 ---------
 
-update ejabberd module to realize what you are want
